@@ -1,11 +1,13 @@
 import React from "react";
-import Header from "./Header";
+import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
 
 function MainTemplate(props){
     const {
         children,
         navItems,
-        logo
+        logo,
+        nasa_logo
     } = props;
 
     return (
@@ -17,6 +19,9 @@ function MainTemplate(props){
             <div className="my-5">
                 {children}
             </div>
+            <Footer
+                nasa_logo = {nasa_logo}
+            />
         </>
     )
 }
