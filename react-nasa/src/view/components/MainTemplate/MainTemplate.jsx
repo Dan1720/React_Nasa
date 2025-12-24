@@ -7,7 +7,8 @@ function MainTemplate(props){
         children,
         navItems,
         logo,
-        nasa_logo
+        nasa_logo,
+        bicocca
     } = props;
 
     return (
@@ -21,6 +22,7 @@ function MainTemplate(props){
             </div>
             <Footer
                 nasa_logo = {nasa_logo}
+                bicocca = {bicocca}
             />
         </>
     )
