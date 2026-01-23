@@ -7,13 +7,13 @@ import { Route, Routes } from 'react-router-dom';
 
 import MainTemplate from './components/MainTemplate/MainTemplate';
 import Home from './Home'
-import Images from './Images';
+import Gallery from './Gallery';
 
 function App() {
 
   const nav = [
     { url: "/", text: "Home"},
-    { url: "/images", text: "Images"}
+    { url: "/gallery", text: "Gallery"}
   ];
 
 
@@ -28,7 +28,7 @@ function App() {
     >
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/images" element={<Images />} />
+        <Route path="/gallery" element={<Gallery />} />
       </Routes>
 
     </MainTemplate>
