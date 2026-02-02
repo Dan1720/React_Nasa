@@ -8,6 +8,7 @@ import { Route, Routes } from 'react-router-dom';
 import MainTemplate from './components/MainTemplate/MainTemplate';
 import Home from './Home'
 import Gallery from './Gallery';
+import ImageDetail from './components/ImageDetail/ImageDetail';
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/gallery" element={<Gallery />} />
+        <Route path="/gallery/image/:nasaId" element={<ImageDetail />} />
       </Routes>
 
     </MainTemplate>
