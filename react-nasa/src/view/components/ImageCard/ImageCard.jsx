@@ -6,10 +6,10 @@ function ImageCard({item, onClick}){
 
 
     return(
-        <div className="card h-100 shadow-sm" onClick={onClick} style={{ cursor: "pointer" }}>
+        <div className="card h-100 custom-card" onClick={onClick} style={{ cursor: "pointer" }}>
             <img src={imgUrl} className="card-img-top" alt={data.title} />
-            <div className="card-body">
-                <h5 className="card-title">{data.title}</h5>
+            <div className="custom-card-body">
+                <h5 className="custom-card-title">{data.title}</h5>
             </div>
         </div>
     );

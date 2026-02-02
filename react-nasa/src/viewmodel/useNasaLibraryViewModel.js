@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { fetchImagesByID, searchImages } from "../model/NasaImageLibrary";
 
 export function useNasaLibraryViewModel() {
-    const [query, setQuery] = useState("space");
+    const [query, setQuery] = useState("Space");
     const [images, setImages] = useState([]);
 
     useEffect(() => {

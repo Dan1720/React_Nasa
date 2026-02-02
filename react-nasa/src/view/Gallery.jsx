@@ -9,13 +9,17 @@ function Gallery(){
     
     return(
         <div className="gallery-container">
-            <input
+            <div className="search-container">
+                <i className="bi bi-search search-icon"></i>
+                <input
                 type="text"
-                className="form-control mb-4"
+                className="search-input"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search Nasa Images"
             />
+            </div>
+            
 
             <div className="row">
                 {images.map((item, index) => (
