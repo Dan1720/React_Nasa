@@ -59,19 +59,19 @@ function ImageDetail(){
         <div className="container text-center">
             <div className="d-flex justify-content-between my-4">
                 <button
-                    className="btn btn-outline-primary"
+                    className="button-custom"
                     onClick={goPrevious}
                     disabled={currentIndex===0 || images.length === 0}
                 >
                     Previous
                 </button>
 
-                <button className="btn btn-secondary" onClick={goBack}>
+                <button className="button-custom" onClick={goBack}>
                     Back to Gallery
                 </button>
 
                 <button
-                    className="btn btn-outline-primary"
+                    className="button-custom"
                     onClick={goNext}
                     disabled={currentIndex===images.length-1 || images.length === 0}
                 >

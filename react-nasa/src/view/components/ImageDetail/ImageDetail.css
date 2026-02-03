@@ -1,0 +1,19 @@
+.button-custom{
+    background: transparent;
+    border: none;
+    color: #fff;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.75rem !important;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin: 0;
+}
+.button-custom:hover{
+    outline:none;
+    background: transparent;
+    border-bottom-color: #fff;
+    box-shadow: none;
+    transform: scale(1.1);
+}
