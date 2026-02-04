@@ -6,18 +6,16 @@ import "./Gallery.css";
 
 function Gallery(){
     const [searchParams, setSearchParams] = useSearchParams();
-    const urlQuery = searchParams.get('search') || "Space";
-    const { query, setQuery, images } = useNasaLibraryViewModel(urlQuery);
+    const urlQuery = searchParams.get('search') || "Galaxy";
+    const { query, setQuery, images, loading } = useNasaLibraryViewModel(urlQuery);
     const navigate = useNavigate();
-    
-
 
     const handleSearchChange = (e) => {
         const val = e.target.value
         setQuery(val);
         setSearchParams(val ? {search: val}: {}, {replace: true})
     };
-    
+    const noResult = !loading && images.length == 0;
     return(
         <div className="gallery-container">
             <div className="search-container">
@@ -31,8 +29,17 @@ function Gallery(){
             />
             </div>
             
-
-            <div className="row">
+            
+            {loading ? (
+                <div className="container text-center">
+                    Loading...
+                </div>
+            ): noResult ? (
+                <div className="container text-center">
+                    <h3>No result for "{query}"</h3>
+                    <p>Check your spelling or try looking for something else.</p>
+                </div>
+            ) : (<div className="row">
                 {images.map((item, index) => (
                     <div key={index} className="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
                         <ImageCard item={item}
@@ -48,6 +55,8 @@ function Gallery(){
                     </div>
                 ))}
             </div>
+            )}
+            
 
             
         </div>

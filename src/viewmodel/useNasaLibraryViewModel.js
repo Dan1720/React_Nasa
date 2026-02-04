@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import { fetchImagesByID, searchImages } from "../model/NasaImageLibrary";
 
-export function useNasaLibraryViewModel(initialQuery="Space") {
+export function useNasaLibraryViewModel(initialQuery="Galaxy") {
     const [query, setQuery] = useState(initialQuery);
     const [images, setImages] = useState([]);
+    const [loading, setLoading] = useState(null);
 
     useEffect(() => {
         if (query){
-            searchImages(query).then(setImages);
+            searchImages(query).then(setImages).finally(() => setLoading(false));
         }
         
     }, [query]);
@@ -16,6 +17,7 @@ export function useNasaLibraryViewModel(initialQuery="Space") {
         query,
         setQuery,
         images,
+        loading
     };
 }
 

@@ -1,11 +1,14 @@
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useNasaImageDetailViewModel } from "../../../viewmodel/useNasaLibraryViewModel";
 import './ImageDetail.css';
+import NotFound from "../NotFound/NotFound";
+import NotFoundImage from "../NotFoundImage/NotFoundImage";
+
 function ImageDetail(){
     const { nasaId } = useParams();
     const { image, loading } = useNasaImageDetailViewModel(nasaId);
     const location = useLocation();
-    const { images=[], currentIndex = 0, fromSearch = "?search=Space"} = location.state || {};
+    const { images=[], currentIndex = 0, fromSearch = "?search=Galaxy"} = location.state || {};
     const navigate = useNavigate();
 
     const currentImage = images.length ? images[currentIndex]: image;
@@ -19,11 +22,16 @@ function ImageDetail(){
         );
     }
 
-    if(!currentImage){
+    if(!currentImage || !currentImage.data){
         return(
-            <p className="text-center"> Image not found</p>
-        );
+            <NotFoundImage 
+                nasaId = {nasaId}
+                fromSearch = {fromSearch}
+            />
+        )
     }
+
+    
 
     const data = currentImage.data[0];
     const imgUrl = currentImage.links?.[0]?.href;

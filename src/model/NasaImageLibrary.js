@@ -9,9 +9,19 @@ export async function searchImages(query){
 }
 
 export async function fetchImagesByID(nasaID){
-    const response = await fetch(
-        `${BASE_URL_LIBRARY}/search?nasa_id=${nasaID}`
-    );
-    const data = await response.json();
-    return data.collection.items[0] ?? null;
+    try{
+        const response = await fetch(
+            `${BASE_URL_LIBRARY}/search?nasa_id=${nasaID}`
+        );
+        if (!response.ok) {
+            throw new Error("Error while retrieving image")
+        }
+        const data = await response.json();
+        return data.collection.items[0] ?? null;
+    } catch(error){
+        console.error("API Nasa Error:", error);
+        return null;
+    }
+    
+    
 }

@@ -9,12 +9,13 @@ import MainTemplate from './components/MainTemplate/MainTemplate';
 import Home from './Home'
 import Gallery from './Gallery';
 import ImageDetail from './components/ImageDetail/ImageDetail';
+import NotFound from './components/NotFound/NotFound';
 
 function App() {
 
   const nav = [
     { url: "/", text: "Home"},
-    { url: "/gallery?search=Space", text: "Gallery"}
+    { url: "/gallery?search=Galaxy", text: "Gallery"}
   ];
 
 
@@ -31,6 +32,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/gallery/image/:nasaId" element={<ImageDetail />} />
+        <Route path="*" element={<NotFound />}/>
       </Routes>
 
     </MainTemplate>
