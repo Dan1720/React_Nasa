@@ -29,9 +29,11 @@
     margin: 0 6px;
     align-self: center;
 }
+.logo:hover{
+    transform: scale(1.1);
+}
 
 .copyright {
-    border-left: 1px solid #393939;
     padding-left: 20px;
     justify-content: space-between;
     align-items: stretch;
@@ -39,14 +41,9 @@
 
 
 .footerNav{
-    border-left: 1px solid #393939;
     padding-left: 20px;
 }
 .footerNav a{
     margin: 8px 0;
     display: inline-block;
-}
-
-.active{
-    border-bottom: 1px solid #dd092f;
 }

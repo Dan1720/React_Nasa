@@ -1,5 +1,5 @@
 import React from "react";
-
+import "./Home.css"
 import { useNasaAPODViewModel } from "../viewmodel/useNasaAPODViewModel";
 
 function Home(){
@@ -19,9 +19,11 @@ function Home(){
             width="500"
             />
         )}
-
-        <p>{apod.explanation}</p>
-        <small>© {apod.copyright}</small>
+        <div className="custom-padding">
+            <p>{apod.explanation}</p>
+            <small>© {apod.copyright}</small>
+        </div>
+        
         </article>
     );
 }

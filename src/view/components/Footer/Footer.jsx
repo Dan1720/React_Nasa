@@ -2,7 +2,7 @@ import React from 'react';
 import style from './Footer.module.css';
 
 const Footer = (props) => {
-    const { nasa_logo, bicocca } = props
+    const { nasa_logo} = props
     return (
         <footer className={style.footer}>
             <div className="container-fluid">
@@ -14,11 +14,7 @@ const Footer = (props) => {
                                     <img className={style.logo} src={nasa_logo} alt="unimib"/>
                                 </a>
                             </div>
-                            <div id={style.unimib} className={style.logo}>
-                                <a href="https://www.unimib.it/" target="_blank">
-                                    <img className={style.logo} src={bicocca} alt="unimib"/>
-                                </a>
-                            </div>
+                            
                         </div>
                         
                     </div>

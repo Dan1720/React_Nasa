@@ -10,10 +10,13 @@
     letter-spacing: 1.5px;
     margin: 0;
 }
-.button-custom:hover{
+.button-custom:not(:disabled):hover{
     outline:none;
     background: transparent;
     border-bottom-color: #fff;
     box-shadow: none;
     transform: scale(1.1);
+}
+.button-custom:disabled{
+    color: rgba(255, 255, 255, 0.3);
 }
