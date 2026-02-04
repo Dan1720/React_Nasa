@@ -1,11 +1,22 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { useNasaLibraryViewModel } from "../viewmodel/useNasaLibraryViewModel";
 import ImageCard from "./components/ImageCard/ImageCard";
 import "./Gallery.css";
 
+
 function Gallery(){
-    const { query, setQuery, images } = useNasaLibraryViewModel();
+    const [searchParams, setSearchParams] = useSearchParams();
+    const urlQuery = searchParams.get('search') || "Space";
+    const { query, setQuery, images } = useNasaLibraryViewModel(urlQuery);
     const navigate = useNavigate();
+    
+
+
+    const handleSearchChange = (e) => {
+        const val = e.target.value
+        setQuery(val);
+        setSearchParams(val ? {search: val}: {}, {replace: true})
+    };
     
     return(
         <div className="gallery-container">
@@ -15,7 +26,7 @@ function Gallery(){
                 type="text"
                 className="search-input"
                 value={query}
-                onChange={(e) => setQuery(e.target.value)}
+                onChange={handleSearchChange}
                 placeholder="Search Nasa Images"
             />
             </div>
@@ -29,7 +40,8 @@ function Gallery(){
                                 navigate(`/gallery/image/${item.data[0].nasa_id}`, {
                                     state:{
                                         images,
-                                        currentIndex: index
+                                        currentIndex: index,
+                                        fromSearch: `?search=${query}`
                                     }
                                 })
                             }/>

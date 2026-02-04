@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
 import { fetchImagesByID, searchImages } from "../model/NasaImageLibrary";
 
-export function useNasaLibraryViewModel() {
-    const [query, setQuery] = useState("Space");
+export function useNasaLibraryViewModel(initialQuery="Space") {
+    const [query, setQuery] = useState(initialQuery);
     const [images, setImages] = useState([]);
 
     useEffect(() => {
-        searchImages(query).then(setImages);
+        if (query){
+            searchImages(query).then(setImages);
+        }
+        
     }, [query]);
 
     return{

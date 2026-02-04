@@ -5,7 +5,7 @@ function ImageDetail(){
     const { nasaId } = useParams();
     const { image, loading } = useNasaImageDetailViewModel(nasaId);
     const location = useLocation();
-    const { images=[], currentIndex = 0} = location.state || {};
+    const { images=[], currentIndex = 0, fromSearch = "?search=Space"} = location.state || {};
     const navigate = useNavigate();
 
     const currentImage = images.length ? images[currentIndex]: image;
@@ -34,7 +34,8 @@ function ImageDetail(){
             navigate(`/gallery/image/${prevId}`, {
                 state: {
                     images,
-                    currentIndex: currentIndex - 1
+                    currentIndex: currentIndex - 1,
+                    fromSearch
                 }
             });
         }
@@ -45,14 +46,17 @@ function ImageDetail(){
             navigate(`/gallery/image/${nextId}`, {
                 state: {
                     images,
-                    currentIndex: currentIndex + 1
+                    currentIndex: currentIndex + 1,
+                    fromSearch
                 }
             });
         }
     }
 
+    console.log("Stato ricevuto:", location.state);
+
     const goBack = () => {
-        navigate(`/gallery`)
+        navigate(`/gallery${fromSearch}`)
     }
 
     return(

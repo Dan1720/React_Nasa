@@ -14,7 +14,7 @@ function App() {
 
   const nav = [
     { url: "/", text: "Home"},
-    { url: "/gallery", text: "Gallery"}
+    { url: "/gallery?search=Space", text: "Gallery"}
   ];
 
 
