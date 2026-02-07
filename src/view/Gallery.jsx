@@ -3,20 +3,30 @@ import { useNasaLibraryViewModel } from "../viewmodel/useNasaLibraryViewModel";
 import ImageCard from "./components/ImageCard/ImageCard";
 import "./Gallery.css";
 import debounce from "lodash.debounce";
-import { useCallback } from "react";
+import { useMemo, useEffect} from "react";
 
 function Gallery(){
     const [searchParams, setSearchParams] = useSearchParams();
     const urlQuery = searchParams.get('search') || "Galaxy";
     const { query, setQuery, images, loading } = useNasaLibraryViewModel(urlQuery);
     const navigate = useNavigate();
+
     
-    const debounceSetSearchParams = useCallback(
+    useEffect(() => {
+        setQuery(urlQuery);
+    }, [urlQuery, setQuery]);
+
+    const debounceSetSearchParams = useMemo(
         () => debounce((val) => {
             setSearchParams(val ? {search: val}: {}, {replace: true});
-        }, 500),
+        }, 3000),
         [setSearchParams]
     );
+    useEffect(() => {
+        return () => {
+            debounceSetSearchParams.cancel();
+        };
+    }, [debounceSetSearchParams]);
     const handleSearchChange = (e) => {
         const val = e.target.value
         setQuery(val);

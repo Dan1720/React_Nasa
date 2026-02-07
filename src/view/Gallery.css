@@ -84,3 +84,9 @@
   letter-spacing: 1.5px;
   margin: 0;
 }
+
+.img-card-fixed {
+    height: 200px;       /* Altezza fissa per tutte le card */
+    object-fit: cover;   /* Ritaglia l'immagine */
+    object-position: center; /* Centra il ritaglio */
+}
