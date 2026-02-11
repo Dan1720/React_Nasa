@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import "../NotFound/NotFound.css"
+import style from "../NotFound/NotFound.module.css"
 
 function NotFoundImage({ nasaId, fromSearch }){
     const navigate = useNavigate();
@@ -12,7 +12,7 @@ function NotFoundImage({ nasaId, fromSearch }){
             <h1>Image Not Found!!</h1>
             <p>We couldn't retrieve the data for ID: <strong>{nasaId}</strong></p>
             <button
-                className="button-custom"
+                className={style.buttonCustom}
                 onClick={goBack}
             >
                 Go back to Gallery

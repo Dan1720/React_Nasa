@@ -1,6 +1,6 @@
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useNasaImageDetailViewModel } from "../../../viewmodel/useNasaLibraryViewModel";
-import './ImageDetail.css';
+import style from './ImageDetail.module.css';
 import NotFound from "../NotFound/NotFound";
 import NotFoundImage from "../NotFoundImage/NotFoundImage";
 
@@ -71,19 +71,19 @@ function ImageDetail(){
         <div className="container text-center">
             <div className="d-flex justify-content-between my-4">
                 <button
-                    className="button-custom"
+                    className={style.buttonCustom}
                     onClick={goPrevious}
                     disabled={currentIndex===0 || images.length === 0}
                 >
                     Previous
                 </button>
 
-                <button className="button-custom" onClick={goBack}>
+                <button className={style.buttonCustom} onClick={goBack}>
                     Back to Gallery
                 </button>
 
                 <button
-                    className="button-custom"
+                    className={style.buttonCustom}
                     onClick={goNext}
                     disabled={currentIndex===images.length-1 || images.length === 0}
                 >
@@ -93,7 +93,7 @@ function ImageDetail(){
 
             </div>
             <h2>{data.title}</h2>
-            <div className="image-wrapper">
+            <div>
                 <img src={imgUrl} className="img-fluid my-4" alt={data.title} />
             </div>
             

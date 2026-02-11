@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import "./NotFound.css"
+import style from "./NotFound.module.css"
 function NotFound(){
     const navigate = useNavigate();
     const goBack = () => {
@@ -10,7 +10,7 @@ function NotFound(){
         <div className="container text-center">
             <h1>404 - Page not found</h1>
             <button
-                className="button-custom"
+                className={style.buttonCustom}
                 onClick={goBack}
             >
                 Go back to Home Page

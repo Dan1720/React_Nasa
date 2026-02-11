@@ -1,7 +1,7 @@
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useNasaLibraryViewModel } from "../viewmodel/useNasaLibraryViewModel";
 import ImageCard from "./components/ImageCard/ImageCard";
-import "./Gallery.css";
+import style from "./Gallery.module.css";
 import debounce from "lodash.debounce";
 import { useMemo, useEffect} from "react";
 
@@ -34,12 +34,12 @@ function Gallery(){
     };
     const noResult = !loading && images.length == 0;
     return(
-        <div className="gallery-container">
-            <div className="search-container">
-                <i className="bi bi-search search-icon"></i>
+        <div className={style.galleryContainer}>
+            <div className={style.searchContainer}>
+                <i className={`bi bi-search ${style.searchIcon}`}></i>
                 <input
                 type="text"
-                className="search-input"
+                className={style.searchInput}
                 value={query}
                 onChange={handleSearchChange}
                 placeholder="Search Nasa Images"

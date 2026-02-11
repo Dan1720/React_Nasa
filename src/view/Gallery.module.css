@@ -1,11 +1,11 @@
-.search-container{
+.searchContainer{
   margin-bottom: 50px;
   position: relative;
   display: flex;
   align-items: center;
   width: 100%;
 }
-.search-input{
+.searchInput{
   background: transparent;
   border: none;
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
@@ -16,14 +16,14 @@
   padding: 12px 0px 12px 45px !important;
   width: 100%;
 }
-.search-input:focus{
+.searchInput:focus{
   outline:none;
   background: transparent;
   border-bottom-color: #fff;
   box-shadow: none;
 }
 
-.search-icon {
+.searchIcon {
   position: absolute;
   font-size: 1.1rem;
   color: rgba(255, 255, 255, 0.4);
@@ -32,19 +32,19 @@
   z-index: 2;
 }
 
-.gallery-container {
+.galleryContainer {
   margin-bottom: 40px 0;
   background-color: transparent;
 }
 
-.custom-card{
+.customCard{
   background-color: #000 !important;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
   border-radius: 0 !important;
   overflow: visible !important;
   border-top: 1px solid rgba(255, 255, 255, 0.4) !important;
 }
-.custom-card::before{
+.customCard::before{
   content: "";
   position: absolute;
   top: 40%;
@@ -57,26 +57,26 @@
   pointer-events: none;
   transition: all 0.5s ease;
 }
-.custom-card:hover{
+.customCard:hover{
   border-color: rgba(255, 255, 255, 0.4) !important;
   transform: translateY(-5px);
 }
-.custom-card img{
+.customCard img{
   border-radius: 0 !important;
   transition: transform 0.8s ease;
   filter: brightness(0.8);
   object-fit: cover;
 }
-.custom-card:hover img {
+.customCard:hover img {
     transform: scale(1.1);
     filter: brightness(1);
 }
 
-.custom-card-body{
+.customCardBody{
   padding: 1.2rem 0.5rem !important;
 }
 
-.custom-card-title{
+.customCardTitle{
   color: #fff;
   font-size: 0.75rem !important;
   font-weight: 600;
@@ -85,7 +85,7 @@
   margin: 0;
 }
 
-.img-card-fixed {
+.imgCardFixed {
     height: 200px;       /* Altezza fissa per tutte le card */
     object-fit: cover;   /* Ritaglia l'immagine */
     object-position: center; /* Centra il ritaglio */

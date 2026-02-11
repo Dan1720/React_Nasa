@@ -1,4 +1,4 @@
-import "../../Gallery.css";
+import style from "../../Gallery.module.css";
 function ImageCard({item, onClick}){
     const data = item.data[0];
     const imgUrl = item.links?.[0]?.href;
@@ -6,10 +6,10 @@ function ImageCard({item, onClick}){
 
 
     return(
-        <div className="card h-100 custom-card" onClick={onClick} style={{ cursor: "pointer" }}>
-            <img src={imgUrl} className="card-img-top img-card-fixed" alt={data.title} />
-            <div className="custom-card-body">
-                <h5 className="custom-card-title">{data.title}</h5>
+        <div className={`card h-100 ${style.customCard}`} onClick={onClick} style={{ cursor: "pointer" }}>
+            <img src={imgUrl} className={style.imgCardFixed} alt={data.title} />
+            <div className={style.customCardBody}>
+                <h5 className={style.customCardTitle}>{data.title}</h5>
             </div>
         </div>
     );

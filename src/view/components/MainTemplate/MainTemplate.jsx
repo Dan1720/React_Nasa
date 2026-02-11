@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
-import "./MainTemplate.css"
+import style from "./MainTemplate.module.css"
 
 function MainTemplate(props){
     const {
@@ -13,12 +13,12 @@ function MainTemplate(props){
     } = props;
 
     return (
-        <div className="app-container">
+        <div className={style.appContainer}>
             <Header
                 logo={logo}
                 navItems={navItems}
             />
-            <main className="content my-5">
+            <main className={`${style.content} my-5`}>
                 {children}
             </main>
             <Footer
