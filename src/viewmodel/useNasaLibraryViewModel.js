@@ -7,10 +7,26 @@ export function useNasaLibraryViewModel(initialQuery="Galaxy") {
     const [loading, setLoading] = useState(null);
 
     useEffect(() => {
-        if (query){
-            searchImages(query).then(setImages).finally(() => setLoading(false));
+        if(!query){
+            return;
         }
-        
+
+        let isActive = true;
+        searchImages(query)
+            .then((data) => {
+                if(isActive) {
+                    setImages(data);
+                }
+            })
+            .finally(() => {
+                if(isActive){
+                    setLoading(false);
+                }
+            })
+        return () => {
+            isActive = false;
+        };
+
     }, [query]);
 
     return{
