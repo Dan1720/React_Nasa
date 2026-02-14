@@ -50,7 +50,7 @@ Sono presenti tre ViewModel principali:
 - **useNasaImageDetailViewModel** - recupera i dati di una singola immagine tramite identificativo.
 
 ## Possibili miglioramenti
-- Implementazione di un meccanismo di debounce nella barra di ricerca, al fine di limitare le richieste API inviate durante la digitazione e migliorare le performance dell'applicazione
+- Attualmente viene utilizzato un debounce manuale con lodash; in futuro si potrebbe implementare una gestione più avanzata tramite hook personalizzato o libreria dedicata.
 - Autenticazione tramite [Auth0](https://auth0.com/) per l'autenticazione e salvataggio di immagini
 
 ## Tecnologie utilizzate

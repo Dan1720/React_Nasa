@@ -1,7 +1,16 @@
 import React from 'react';
 import style from './Footer.module.css';
 
+/**
+ * Componente Footer.
+ * 
+ * Si occupa di:
+ * - Mostrare il logo della NASA in fondo alla pagina
+ * - Fornire un link esterno al sito ufficiale della NASA
+ * 
+ */
 const Footer = (props) => {
+    // Props ricevute: logo della NASA
     const { nasa_logo} = props
     return (
         <footer className={style.footer}>

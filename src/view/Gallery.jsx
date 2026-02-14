@@ -5,36 +5,79 @@ import style from "./Gallery.module.css";
 import debounce from "lodash.debounce";
 import { useMemo, useEffect} from "react";
 
+/**
+ * Componente View che si occupa del rendering della galleria e dell'interazione utente
+ * 
+ * Si occupa di:
+ * - Gestire la ricerca delle immagini NASA
+ * - Sincronizzare lo stato della ricerca con l'URL
+ * - Mostrare loading, risultati o messaggio di "nessun risultato"
+ * - Gestire la navigazione verso il dettaglio immagine
+ */
 function Gallery(){
+    // Gestione dei parametri di query nell'URL 
     const [searchParams, setSearchParams] = useSearchParams();
+
+    // Recupera il valore della query
     const urlQuery = searchParams.get('search') || "Galaxy";
+
+    // Hook ViewModel: gestisce la query di ricerca, recupera le immagini dalla
+    // NASA API e fornisce lo stato di loading
     const { query, setQuery, images, loading } = useNasaLibraryViewModel(urlQuery);
+
+    // Hook per la navigazione tra le pagine
     const navigate = useNavigate();
 
-    
+    /**
+     * Mantiene sincronizzato lo stato interno (query) con il parametro presente nell'URL
+     */
     useEffect(() => {
         setQuery(urlQuery);
     }, [urlQuery, setQuery]);
 
+    /**
+    * Funzione debounce per ritardare l'aggiornamento
+    * del parametro di ricerca nell'URL.
+    *
+    * Riduce il numero di aggiornamenti durante la digitazione
+    * migliorando l'esperienza utente e le performance.
+    *
+    * useMemo evita la ricreazione della funzione ad ogni render.
+     */
     const debounceSetSearchParams = useMemo(
         () => debounce((val) => {
             setSearchParams(val ? {search: val}: {}, {replace: true});
         }, 3000),
         [setSearchParams]
     );
+
+    /**
+     * Questo effetto evita che la funzione di debounce venga eseguita quando il
+     * componente non esiste più
+     */
     useEffect(() => {
         return () => {
             debounceSetSearchParams.cancel();
         };
-    }, [debounceSetSearchParams]);
+    }, [debounceSetSearchParams]);  
+
+    /**
+     * Gestione input di ricerca:
+     * - aggiorna lo stato interno
+     * - aggiorna l'URL in modo ritardato (debounce)
+     */
     const handleSearchChange = (e) => {
         const val = e.target.value
         setQuery(val);
         debounceSetSearchParams(val)
     };
+
+    // Verifica se non ci sono risultati
     const noResult = !loading && images.length == 0;
     return(
         <div className={style.galleryContainer}>
+
+            {/* Barra di ricerca */}
             <div className={style.searchContainer}>
                 <i className={`bi bi-search ${style.searchIcon}`}></i>
                 <input
@@ -46,7 +89,7 @@ function Gallery(){
             />
             </div>
             
-            
+            {/* Gestione stati */}
             {loading ? (
                 <div className="container text-center">
                     Loading...
@@ -63,9 +106,9 @@ function Gallery(){
                             onClick={() => 
                                 navigate(`/gallery/image/${item.data[0].nasa_id}`, {
                                     state:{
-                                        images,
-                                        currentIndex: index,
-                                        fromSearch: `?search=${query}`
+                                        images, // lista corrente
+                                        currentIndex: index, // posizione immagine
+                                        fromSearch: `?search=${query}` // query corrente
                                     }
                                 })
                             }/>
