@@ -8,7 +8,7 @@ NASA Image Gallery è una Single Page Application sviluppata in **React + Vite**
 - Gestione degli errori
 
 ## Pattern Architetturale
-L'applicazione implementa il pattern architetturale **MVVM (Model View ViewModel)** al fine di separare la logica di accesso ai dati, la logica di presentazione e l’interfaccia utente e per favorire il riutilizzo del codice.
+L'applicazione implementa il pattern architetturale **MVVM (Model View ViewModel)** al fine di separare la logica di accesso ai dati, la logica di coordinamento e l’interfaccia utente e per favorire il riutilizzo del codice.
 
 
 ### Model
