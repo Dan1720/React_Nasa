@@ -24,6 +24,8 @@ export function useNasaAPODViewModel() {
          */
         async function loadAPOD() {
             try{
+
+                // Chiamata asincrona al Model
                 const apod = await fetchAPOD();
 
                 // Seleziona solo i campi necessari alla View
