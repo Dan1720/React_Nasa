@@ -12,7 +12,7 @@ L'applicazione implementa il pattern architetturale **MVVM (Model View ViewModel
 
 
 ### Model
-I Models, contengono la logica di accesso ai dati ed interagiscono con le API esterne. In questo software l'implementazione è stata sviluppat allìinterno dei seguenti files:
+I Models, contengono la logica di accesso ai dati ed interagiscono con le API esterne. In questo software l'implementazione è stata sviluppata all'interno dei seguenti files:
 - **NasaModelAPOD**: utilizza l'API per ottenere l'immagine giornaliera.
 ```bash
    endpoint: https://api.nasa.gov/planetary/apod
@@ -30,7 +30,7 @@ Le Views sono responsabili della struttura dell'interfaccia utente e della prese
 - **Gallery.jsx** - visualizzazione della galleria.
 #### Componenti riutilizzabili
 - **Template principale** - definisce la struttura base dell'applicazione includendo Navbar, Footer e il contenuto dinamico (children).  
-- **Navbar** - barra di navigazione che consente lo spostamento tra le sezioni (Home e Galleria)
+- **Navbar** - barra di navigazione che consente lo spostamento tra le sezioni (Home e Gallery)
 - **Footer** - sezione inferiore dell’interfaccia che presenta il logo della NASA, a indicare la provenienza delle immagini e dei contenuti mostrati nell’applicazione.
 - **Card immagini** - componente riutilizzabile per la visualizzazione sintetica delle immagini nella galleria
 - **Dettaglio immagini** - mostra le informazioni complete di una singola immagine selezionata
@@ -51,7 +51,7 @@ Sono presenti tre ViewModel principali:
 
 ## Possibili miglioramenti
 - Attualmente viene utilizzato un debounce manuale con lodash; in futuro si potrebbe implementare una gestione più avanzata tramite hook personalizzato o libreria dedicata.
-- Autenticazione tramite [Auth0](https://auth0.com/) per l'autenticazione e salvataggio di immagini
+- Utilizzo di [Auth0](https://auth0.com/) per l'autenticazione e salvataggio delle immagini preferite.
 
 ## Tecnologie utilizzate
 - React
